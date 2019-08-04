@@ -57,7 +57,7 @@ if ($q->num_rows() >0 ) return $q;//->result();
 
 
 public function obtener_turnos_disponibles($id_profesional, $fecha_inicio){
-$this->db->select('TIME(t.fecha) as fecha, g.nombre as profesional');
+$this->db->select('TIME(t.fecha) as fecha, g.nombre as profesional, t.id');
 $this->db->from('turnos t');
 $this->db->join('profesional g', 'g.id = t.profesional');
 
@@ -114,6 +114,14 @@ function eliminar_turno($id)
 		  return $query;
 	 }
 
+
+	 public function confirmar_turno($turno)
+{
+	$this->db->set('usuario', $turno['usuario']);
+	$this->db->set('paciente', $turno['paciente']);	
+	$this->db->where('id', $turno['id_turno']);
+	$this->db->update('turnos');	
+}
 
 }
 

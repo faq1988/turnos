@@ -20,9 +20,9 @@
                     if (isset($turnos_disponibles)){
                      for($i=0; $i<count($turnos_disponibles); $i++){ 
                     ?>
-                    
-                    <button type="button" class="btn btn-outline-primary">
-                      <?php echo $turnos_disponibles[$i]['fecha'];?></button>
+                               
+                      <a class="btn btn-outline-primary" href="<?=base_url()?>Turnos/llenar_paciente/<?php echo $turnos_disponibles[$i]['id']; ?>">
+                        <?php echo substr($turnos_disponibles[$i]['fecha'], 0, 5);?></a>
 
                     <?php } }?>
                   </div>                                
